@@ -47,3 +47,16 @@ For each account I got from Twitter, I measure them by 2 threshhold:
 
 1. The ```follower_count``` and ```friends_count``` should both above 200
 2. Since I can get the tweets this account posted in 7 days, I will drop users didn't post anything in recent 7 days 
+
+## Most Frequent Words
+Get top 100 frequent words from Democracy and Republic following's description.
+
+Steps:
+
+1. Extract description from dataframe.
+2. Remove rows without description.
+3. Remove punctuation and stopwords.
+4. Stemming, so my program is able to deal with words like 'apple' and 'apples', regard them are the same word 'apple'.
+5. Remove words only show once.
+6. Form corpora.
+7. Count. 
