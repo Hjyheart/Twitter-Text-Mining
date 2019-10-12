@@ -57,6 +57,17 @@ Steps:
 2. Remove rows without description.
 3. Remove punctuation and stopwords.
 4. Stemming, so my program is able to deal with words like 'apple' and 'apples', regard them are the same word 'apple'.
-5. Remove words only show once.
+5. Remove words only show once and ```len(words) < 4```.
 6. Form corpora.
 7. Count. 
+
+## Apply TFIDF to Get Top 100 Weighted Keywords
+I apply TFIDF model on this dataset then extract top 100 weighted keywords. Here are the steps.
+
+Steps:
+
+1. Throw our corpra into Gensim's TFIDF Model.
+2. Go through every description.
+3. Pickup top 3 weighted words in each description.
+4. Count words picked up.
+5. Rank them.
