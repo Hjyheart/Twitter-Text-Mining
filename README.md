@@ -30,7 +30,7 @@ A text mining project. In this project, I call Twiiter Development API and get 1
 
 ## Data Collecting Strategy
 
-All the users are collected from 6 famous twitter account: SenateDems, HouseDemocrats, TheDemocrats, SenateGOP, HouseGOP and GOP, 3 for Democracy and 3 for Republic. The strategy to get users only following one party is quite tricky. Twiiter free developer account is only allowed to send request to check following list 1 time/min, so check all the users are unrealistic. 
+All the users are collected from 6 famous twitter account: SenateDems, HouseDemocrats, TheDemocrats, SenateGOP, HouseGOP and GOP, 3 for Democracy and 3 for Republic. We call the API, then Twitter will give us a list of followers randomly. However, Twiiter free developer account is only allowed to send request to check following list 1 time/min, so check all the users are unrealistic. The strategy to get users only following one party is quite tricky.
 
 Steps:
 1. Get user lists from Democracy first, then insert them into ElasticSearch (database), mark them Demo set id unique. Right now, in the database, users may follow both D and R.
@@ -71,3 +71,14 @@ Steps:
 3. Pickup top 3 weighted words in each description.
 4. Count words picked up.
 5. Rank them.
+
+## Apply LIWC on Tweets
+We bought LIWC 30 days license and run test. Here are the data cleasing things and some preprocessing before the data going to LIWC. Codes are in the script **arrange_tweets.ipynb**.
+
+Steps:
+
+1. Get recent 50 tweets of every user, then extract the attribute "full_textt" (Tweets textual content) from each tweet, put it into a txt file named **{user_id}_{tweet_id}.txt**, for example: **4216101_1090396584704126977.txt**, 4216101 is the user_id, 1090396584704126977 is the tweet_id. I will put the id into result file later, so you can combine them with description quickly.
+2. Since LIWC will help us do the text cleasing, we don't need to do anything, just feed the original texts into LIWC.
+3. Run LIWC, assign the directory name to LIWC, LIWC will check each txt file and count words.
+
+
